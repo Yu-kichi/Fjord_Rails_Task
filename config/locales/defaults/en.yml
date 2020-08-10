@@ -1,0 +1,17 @@
+en:
+  directory:
+    link:
+      Back: Back
+      Edit: Edit
+      Show: Show
+      Destroy: Destroy
+    flash:
+      destroy: Book was successfully destroyed.
+      create: Book was successfully created.
+      update: Book was successfully updated.
+    modal:
+      confirm: Are you sure?  
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+  Top: Top

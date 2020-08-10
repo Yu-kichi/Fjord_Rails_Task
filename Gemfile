@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -24,11 +26,11 @@ gem "jbuilder", "~> 2.7"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem "awesome_print"
+gem "rails-i18n"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 gem "carrierwave"
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

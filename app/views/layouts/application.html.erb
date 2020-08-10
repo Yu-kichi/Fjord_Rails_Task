@@ -4,12 +4,15 @@
     <title>BooksApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <%= yield %>
+  <body >
+    <%= render 'header'%>
+    <%= render 'flash'%>
+    <div class= "container mb-5 ">
+      <%= yield %>
+    </div>
+    <%= render 'fotter'%>
   </body>
 </html>

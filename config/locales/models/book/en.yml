@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      book: book         
+    attributes:                     
+      book:
+        id: id
+        title: title
+        author: author
+        picture: picture
+        memo: memo
+  attributes:
+    created_at: created_at
+    updated_at: updated_at
+    

@@ -1,0 +1,10 @@
+en:
+  books:
+    index:
+      New Book: New Book
+      Books: Books
+    new: 
+      New Book: New Book
+    edit:
+      Editing Book: Editing Book
+      
