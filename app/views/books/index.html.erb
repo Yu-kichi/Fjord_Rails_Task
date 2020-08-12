@@ -3,11 +3,11 @@
 <table>
   <thead>
     <tr>
-      <th><%= translate_attribute(:title)%></th>
-      <th><%= translate_attribute(:author)%></th>
-      <th><%= translate_attribute(:memo)%></th>
-      <th><%= translate_attribute(:picture)%></th>
-      <th><%= translate_attribute(:updated_at )%></th>
+      <th><%= Book.human_attribute_name(:title)%></th>
+      <th><%= Book.human_attribute_name(:author)%></th>
+      <th><%= Book.human_attribute_name(:memo)%></th>
+      <th><%= Book.human_attribute_name(:picture)%></th>
+      <th><%= Book.human_attribute_name(:updated_at )%></th>
       <th colspan = "3"></th>
     </tr>
   </thead>
