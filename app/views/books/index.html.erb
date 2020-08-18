@@ -19,9 +19,9 @@
         <td><%= book.memo %></td>
         <td><%= book.picture %></td>
         <td><%= l(book.created_at, format: :short) %></td>
-        <td><%= link_to t("directory.link.Show"), book %></td>
-        <td><%= link_to t("directory.link.Edit"), edit_book_path(book) %></td>
-        <td><%= link_to t("directory.link.Destroy"), book, method: :delete, data: { confirm: t("directory.modal.confirm") } %></td>
+        <td><%= link_to t("link.Show"), book %></td>
+        <td><%= link_to t("link.Edit"), edit_book_path(book) %></td>
+        <td><%= link_to t("link.Destroy"), book, method: :delete, data: { confirm: t("modal.confirm") } %></td>
       </tr>
     <% end %>
   </tbody>

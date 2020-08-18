@@ -20,5 +20,5 @@
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
-<%= link_to t("directory.link.Edit"), edit_book_path(@book) %> |
-<%= link_to t("directory.link.Back"), books_path %>
+<%= link_to t("link.Edit"), edit_book_path(@book) %> |
+<%= link_to t("link.Back"), books_path %>
