@@ -13,7 +13,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    @books = Book.all.page(params[:page]).per(10)
     @time = Time.now
   end
 
@@ -30,7 +30,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to @book, success: t("directory.flash.create")
+      redirect_to @book, success: t("flash.create")
     else
       render :new
     end
@@ -38,7 +38,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to @book, success: t("directory.flash.update")
+      redirect_to @book, success: t("flash.update")
     else
       render :edit
     end
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_url, success: t("directory.flash.destroy")
+    redirect_to books_url, success: t("flash.destroy")
   end
 
   private

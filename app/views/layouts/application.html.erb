@@ -7,10 +7,10 @@
     <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
     <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
   </head>
-  <body>
+  <body class = "text-monospace">
     <%= render "header" %>
-    <%= render "flash" %>
     <div class="container mb-5 ">
+     <%= render "flash" %>
       <%= yield %>
     </div>
     <%= render "fotter" %>

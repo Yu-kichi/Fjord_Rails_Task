@@ -7,7 +7,7 @@
 
 <p>
   <strong><%= Book.human_attribute_name(:memo) %>:</strong>
-  <%= @book.memo %>
+  <%= simple_format(@book.memo) %>
 </p>
 
 <p>
