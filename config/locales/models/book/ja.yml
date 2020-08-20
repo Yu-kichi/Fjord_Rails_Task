@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      book: 本          
+    attributes:                     
+      book:
+        id: ID
+        title: 作品名
+        author: 著者名
+        picture: 写真
+        memo: メモ
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
+

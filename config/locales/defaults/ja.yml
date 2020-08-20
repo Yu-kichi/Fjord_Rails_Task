@@ -1,0 +1,18 @@
+ja:
+  link:
+    Back: 戻る
+    Edit: 編集
+    Show: 詳細
+    Destroy: 削除
+    Top: トップページへ戻る
+  flash:
+    destroy: 削除しました！
+    create: 作成しました！
+    update: 更新しました！
+  modal:
+    confirm: 本当に削除しますか？
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M (%a)"
+
