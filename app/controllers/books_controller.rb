@@ -13,7 +13,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all.page(params[:page]).per(10)
+    @books = Book.all.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
     @time = Time.now
   end
 
