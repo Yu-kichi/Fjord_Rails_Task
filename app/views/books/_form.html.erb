@@ -12,25 +12,25 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :author %>
-    <%= form.text_field :author %>
+    <%= form.text_field :author, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :memo %>
-    <%= form.text_area :memo %>
+    <%= form.text_area :memo, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :picture %>
-    <%= form.file_field :picture %>
+    <%= form.file_field :picture, autofocus: true %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

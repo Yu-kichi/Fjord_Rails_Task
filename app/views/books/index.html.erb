@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 <h1><%= t ".Books" %></h1>
-<table>
+<table class="table table-hover">
   <thead>
-    <tr>
+    <tr class="thead-dark">
       <th><%= Book.human_attribute_name(:title) %></th>
       <th><%= Book.human_attribute_name(:author) %></th>
       <th><%= Book.human_attribute_name(:memo) %></th>
@@ -16,15 +16,18 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
-        <td><%= book.memo %></td>
-        <td><%= book.picture %></td>
+        <td><%= book.memo.truncate(Constants::DISPLAYABLE_NUMBER_OF_CHARACTERS) %></td>
+        <td><%= "◯" if book.picture.present? %></td>
         <td><%= l(book.created_at, format: :short) %></td>
-        <td><%= link_to t("link.Show"), book %></td>
-        <td><%= link_to t("link.Edit"), edit_book_path(book) %></td>
-        <td><%= link_to t("link.Destroy"), book, method: :delete, data: { confirm: t("modal.confirm") } %></td>
+        <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Show"), book %></button></td>
+        <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Edit"), edit_book_path(book) %></button></td>
+        <td><button type="button" class="btn btn-outline-danger btn-sm"><%= link_to t("link.Destroy"), book, method: :delete, data: { confirm: t("modal.confirm") } %></button></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-<%= link_to t(".New Book"), new_book_path %>
+<div class="text-monospace bg-white">
+  <button type="button" class="btn btn-outline-info"><%= link_to t(".New Book"), new_book_path %></button>
+  <div class="paginate mt-4"><%= paginate @books %></div>
+</div>
