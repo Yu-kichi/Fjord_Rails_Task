@@ -2,15 +2,6 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
-  before_action :set_locale
-
-  def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
-  end
-
-  def default_url_options
-    { locale: I18n.locale }
-  end
 
   def index
     @books = Book.all.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)

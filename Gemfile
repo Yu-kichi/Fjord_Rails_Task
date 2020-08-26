@@ -33,6 +33,12 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "carrierwave"
 gem "kaminari"
 gem "font-awesome-sass"
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-bootstrap-views', '~> 1.0'
+gem 'html-pipeline'
+gem 'commonmarker'
+gem "rinku"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -50,6 +56,8 @@ group :development do
   gem "rubocop-rails", require: false
   gem "erb_lint", require: false
   gem "faker"
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do

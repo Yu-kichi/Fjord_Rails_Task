@@ -1,0 +1,12 @@
+indexページ
+destroyリンクは管理者だけに表示
+
+<% @users.each do |user| %>
+  <br><%= user.id %><br>
+  <%= user.name %><br>
+  <%= user.email %><br>
+  <td><%= l(user.created_at, format: :short) %></td>
+       <td><%= link_to t("directory.link.Show"), user %></td>
+       <td><%= link_to t("directory.link.Destroy"), user, method: :delete, data: { confirm: t("directorymodal.confirm") } %></td>
+<% end %>
+<div class="paginate mt-4"><%= paginate @users %></div> 
