@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    #@book_count = @user.books.size
+    @book_count = @user.books.size
+    @books = @user.books
   end
 
   def edit

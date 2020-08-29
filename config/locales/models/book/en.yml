@@ -9,6 +9,7 @@ en:
         author: Author
         picture: Picture
         memo: Memo
+        user_id: Contributor
   attributes:
     created_at: Created_at
     updated_at: Updated_at

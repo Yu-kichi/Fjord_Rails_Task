@@ -3,6 +3,7 @@ en:
     index:
       New Book: New Book
       Books: Books
+      List of posted books by : "List of posted books by %{Contributor}"
     new: 
       New Book: New Book
     edit:

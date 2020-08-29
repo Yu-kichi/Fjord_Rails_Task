@@ -5,6 +5,7 @@ ja:
     Show: 詳細
     Destroy: 削除
     Top: トップページへ戻る
+    Logout: ログアウト
   flash:
     destroy: 削除しました！
     create: 作成しました！
