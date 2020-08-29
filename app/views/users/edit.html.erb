@@ -1,4 +1,6 @@
-editページ
+<p>
+  <h1><%= t ".Editing User" %></h1>
+</p>
 <%= form_with(model: @user, local: true) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">

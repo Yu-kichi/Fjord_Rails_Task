@@ -3,16 +3,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   before_action :correct_user, only: %i[edit update destroy]
-  # def index
-  #   if current_user
-  #     @user = User.find(current_user.id)#これで現在ログイン中の自分のものが表示できる。
-  #     @books = @user.books.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
-  #   else
-  #     @books = Book.all.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
-  #   end
-  #   #@books = Book.all.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
-  #   @time = Time.now
-  # end
+
   def index
     @time = Time.now
     if params[:user_id]
@@ -35,7 +26,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    #@book = Book.new(book_params)
     @book = current_user.books.new(book_params)
     if @book.save
       redirect_to @book, notice: t("flash.create")

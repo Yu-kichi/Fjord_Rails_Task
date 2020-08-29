@@ -1,10 +1,10 @@
-<p id="notice"><%= notice %></p>
-<%#= current_user%>
-<%if @user%>
-  <h1><%= t(".List of posted books by", Contributor: "#{@user.name}")%></h1>
-<%else%>
-  <h1><%= t ".Books" %></h1>
-<%end%>
+<p>
+  <%if @user%>
+    <h1><%= t(".List of posted books by", Contributor: "#{@user.name}")%></h1>
+  <%else%>
+    <h1><%= t ".Books" %></h1>
+  <%end%>
+</p>
 <br>
 <table class="table table-hover">
   <thead>
@@ -28,7 +28,7 @@
         <td><%= "◯" if book.picture.present? %></td>
         <td><%= l(book.created_at, format: :short) %></td>
         <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Show"), book %></button></td>
-        <%if current_user.id == book.user.id%>
+        <%if current_user && current_user.id == book.user.id%>
           <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Edit"), edit_book_path(book) %></button></td>
           <td><button type="button" class="btn btn-outline-danger btn-sm"><%= link_to t("link.Destroy"), book, method: :delete, data: { confirm: t("modal.confirm") } %></button></td>
         <%end%>

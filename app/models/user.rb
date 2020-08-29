@@ -8,6 +8,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :address, length: { maximum: 80 }
   validates :introduction, length: { maximum: 500 }
-  # validates :zip_code,  length: {in: 4..10}#inにするとnilでもエラーになる。新規登録ページで郵便番号の登録が4文字以上必要となりエラーになる為考え直し。
+  validates :zip_code,  length: {maximum: 10}
   
 end

@@ -1,11 +1,9 @@
-
-<h1><%= User.human_attribute_name(:name) %> :<%= "#{@user.name}" %></h1>
-<p><%= User.human_attribute_name(:email) %> : <%= @user.email %></p>
-<p><%= User.human_attribute_name(:address) %>  : <%= @user.address %></p>
-<p><%= User.human_attribute_name(:zip_code) %> : <%= @user.zip_code %></p>
-<p><%= User.human_attribute_name(:introduction) %> : <%= @user.introduction %></p>
-<%= @user.id%></h1>
-<p>投稿した本の件数：<%=@book_count %><p>
+<p><h1><strong><%= User.human_attribute_name(:name) %> :</strong><%= "#{@user.name}" %></h1></p>
+<p><strong><%= User.human_attribute_name(:email) %> :</strong> <%= @user.email %></p>
+<p><strong><%= User.human_attribute_name(:address) %>  :</strong> <%= @user.address %></p>
+<p><strong><%= User.human_attribute_name(:zip_code) %> :</strong> <%= @user.zip_code %></p>
+<p><strong><%= User.human_attribute_name(:introduction) %> :</strong> <%= @user.introduction %></p>
+<p><strong>投稿した本の件数：</strong><%=@book_count %><p>
 <%# 自分以外編集できないようにする。 %>
 <%#@books.each |book|%>
   <%#=@books.title%>

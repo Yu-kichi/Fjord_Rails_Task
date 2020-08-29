@@ -1,12 +1,24 @@
-indexページ
-destroyリンクは管理者だけに表示
+<p id="notice"><%= notice %></p>
+  <h1><%= t "activerecord.models.user" %></h1>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr class="thead-dark">
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user%></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
 
-<% @users.each do |user| %>
-  <br><%= user.id %><br>
-  <%= user.name %><br>
-  <%= user.email %><br>
-  <td><%= l(user.created_at, format: :short) %></td>
-       <td><%= link_to t("directory.link.Show"), user %></td>
-       <td><%= link_to t("directory.link.Destroy"), user, method: :delete, data: { confirm: t("directorymodal.confirm") } %></td>
-<% end %>
-<div class="paginate mt-4"><%= paginate @users %></div> 
+<div class="text-monospace bg-white">
+  <div class="paginate mt-4"><%= paginate @users %></div>
+</div>
