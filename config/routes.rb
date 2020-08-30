@@ -1,21 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    sessions:      "users/sessions",
+    passwords:     "users/passwords",
+    omniauth_callbacks:  "users/omniauth_callbacks" 
+   }
   scope "(:locale)", locale: /en|ja/ do
+    #root :to => 'oauth_test#index'
     root "books#index"
-    # resources :books
-    # resources :books do
-    #  resource :user_books, only: [:create, :destroy]
-    # end
-    # これでuser/id/booksでそのユーザーごとの表示になる、ただしここにおくとuserのログアウトができなくなる。
-    # resources :users do
-    #  resources :books, only:[:index]
-    # end
     resources :books
-    devise_for :users, controllers: {
-      registrations: "users/registrations",
-      sessions:      "users/sessions",
-     }
     resources :users, except: [:new, :create] do
       resources :books, only: [:index]
     end
