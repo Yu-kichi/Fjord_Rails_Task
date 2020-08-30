@@ -1,9 +1,9 @@
 <p>
-  <%if @user%>
-    <h1><%= t(".List of posted books by", Contributor: "#{@user.name}")%></h1>
-  <%else%>
+  <% if @user %>
+    <h1><%= t(".List of posted books by", Contributor: "#{@user.name}") %></h1>
+  <% else %>
     <h1><%= t ".Books" %></h1>
-  <%end%>
+  <% end %>
 </p>
 <br>
 <table class="table table-hover">
@@ -24,22 +24,22 @@
         <td><%= book.title %></td>
         <td><%= book.author %></td>
         <td><%= book.memo.truncate(Constants::DISPLAYABLE_NUMBER_OF_CHARACTERS) %></td>
-        <td><%= link_to book.user.name ,user_books_path(book.user.id)%></td>
+        <td><%= link_to book.user.name, user_books_path(book.user.id) %></td>
         <td><%= "◯" if book.picture.present? %></td>
         <td><%= l(book.created_at, format: :short) %></td>
         <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Show"), book %></button></td>
-        <%if current_user && current_user.id == book.user.id%>
+        <% if current_user && current_user.id == book.user.id %>
           <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Edit"), edit_book_path(book) %></button></td>
           <td><button type="button" class="btn btn-outline-danger btn-sm"><%= link_to t("link.Destroy"), book, method: :delete, data: { confirm: t("modal.confirm") } %></button></td>
-        <%end%>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 <div class="text-monospace bg-white">
-  <%if current_user%>
+  <% if current_user %>
     <button type="button" class="btn btn-outline-info"><%= link_to t(".New Book"), new_book_path %></button>
-  <%end%>
+  <% end %>
   <div class="paginate mt-4"><%= paginate @books %></div>
 </div>

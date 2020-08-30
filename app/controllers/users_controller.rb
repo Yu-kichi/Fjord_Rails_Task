@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # skip_before_action :authenticate_user!, only: :show これで書き方はあってることを確認。
 
   def index
-    @users = User.page(params[:page]).per(10)#マジックナンバーになる。。
+    @users = User.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE) # マジックナンバーになる。。
     @time = Time.now
   end
 
@@ -28,10 +28,6 @@ class UsersController < ApplicationController
   end
 
   private
-    def correct_user
-      redirect_to root_url unless current_user.id == @user.id
-    end
-
     def set_user
       @user = User.find(params[:id])
     end
@@ -40,4 +36,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:email, :name, :zip_code, :address, :introduction)
     end
 
+    def correct_user
+      redirect_to root_url unless current_user.id == @user.id
+    end
 end

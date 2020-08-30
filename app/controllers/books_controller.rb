@@ -7,10 +7,10 @@ class BooksController < ApplicationController
   def index
     @time = Time.now
     if params[:user_id]
-      @user = User.find(params[:user_id])#これで現在ログイン中の自分のものが表示できる。
-      @books = @user.books.page(params[:page]).order(posted_at: :desc).per(Constants::DISPLAYABLE_USER_SIZE)
+      @user = User.find(params[:user_id]) # これで現在ログイン中の自分のものが表示できる。
+      @books = @user.books.page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
     else
-      @books = Book.all.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
+      @books = Book.all.page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
     end
   end
 
@@ -57,6 +57,6 @@ class BooksController < ApplicationController
     end
 
     def correct_user
-     redirect_to(root_url)  unless current_user.id == @book.user.id 
+      redirect_to(root_url)  unless current_user.id == @book.user.id
     end
 end

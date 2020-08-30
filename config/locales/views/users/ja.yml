@@ -32,6 +32,8 @@ ja:
     models:
       user: ユーザー
   users:
+    show:
+      Number of books posted: 投稿した本の件数
     edit:
       Editing User: プロフィールの編集
     confirmations:
@@ -146,3 +148,4 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+

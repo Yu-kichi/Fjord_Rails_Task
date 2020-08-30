@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -8,6 +10,5 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :address, length: { maximum: 80 }
   validates :introduction, length: { maximum: 500 }
-  validates :zip_code,  length: {maximum: 10}
-  
+  validates :zip_code,  length: { maximum: 10 }
 end
