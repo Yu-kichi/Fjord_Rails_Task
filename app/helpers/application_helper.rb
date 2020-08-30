@@ -6,8 +6,7 @@ module ApplicationHelper
     Book.human_attribute_name(attribute)
   end
 
-  def callman(text)
-    # filter = HTML::Pipeline::MarkdownFilter.new(text)
+  def auto_link_filter(text)
     filter = HTML::Pipeline::AutolinkFilter.new(text)
     filter.call.html_safe
   end

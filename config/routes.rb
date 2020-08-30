@@ -3,14 +3,6 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|ja/ do
     root "books#index"
-    # resources :books
-    # resources :books do
-    #  resource :user_books, only: [:create, :destroy]
-    # end
-    # これでuser/id/booksでそのユーザーごとの表示になる、ただしここにおくとuserのログアウトができなくなる。
-    # resources :users do
-    #  resources :books, only:[:index]
-    # end
     resources :books
     devise_for :users, controllers: {
       registrations: "users/registrations",

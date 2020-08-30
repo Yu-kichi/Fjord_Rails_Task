@@ -4,10 +4,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update ]
   before_action :set_locale
   before_action :correct_user, only: %i[edit update ]
-  # skip_before_action :authenticate_user!, only: :show これで書き方はあってることを確認。
 
   def index
-    @users = User.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE) # マジックナンバーになる。。
+    @users = User.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
     @time = Time.now
   end
 
