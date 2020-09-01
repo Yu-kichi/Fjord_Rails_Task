@@ -1,0 +1,44 @@
+<p>
+  <h1><%= t ".Editing User" %></h1>
+</p>
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t("errors.template.header", model: @user, count: @user.errors.count) %></h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip_code %>
+    <%= form.text_field :zip_code, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :introduction %>
+    <%= form.text_area :introduction, autofocus: true, class: "form-control", autocomplete: "introduction" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary " %>
+  </div>
+<% end %>

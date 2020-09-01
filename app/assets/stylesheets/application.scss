@@ -17,7 +17,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
- .pagination>li>a {          
+.pagination>li>a {          
   border: none;    
   color: #696969;  
 }
@@ -33,3 +33,9 @@
   border-radius: 15px;    
 }
 
+.card-header{
+  background-color: #fff;
+}
+.card-body{
+  color: #696969;  
+}

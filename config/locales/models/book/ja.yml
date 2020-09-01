@@ -9,6 +9,7 @@ ja:
         author: 著者名
         picture: 写真
         memo: メモ
+        user_id: 投稿者
   attributes:
     created_at: 作成日
     updated_at: 更新日
