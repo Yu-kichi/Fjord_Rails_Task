@@ -8,7 +8,7 @@
 <%= @user.name %></p>
 <p>
   <strong><%= Book.human_attribute_name(:memo) %>:</strong>
-  <%= simple_format(callman(@book.memo)) %>
+  <%= simple_format(auto_link_filter(@book.memo)) %>
 </p>
 
 <p>

@@ -2,8 +2,8 @@
 
 module ApplicationHelper
   require "html/pipeline"
-  
-  def callman(text)
+
+  def auto_link_filter(text)
     filter = HTML::Pipeline::AutolinkFilter.new(text)
     filter.call.html_safe
   end
