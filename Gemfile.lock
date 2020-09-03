@@ -348,6 +348,7 @@ DEPENDENCIES
   faker
   font-awesome-sass
   html-pipeline
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.2)

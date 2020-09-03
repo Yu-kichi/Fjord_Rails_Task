@@ -26,4 +26,5 @@ class User < ApplicationRecord
   validates :address, length: { maximum: 80 }
   validates :introduction, length: { maximum: 500 }
   validates :zip_code,  length: { maximum: 10 }
+  has_one_attached :portrait
 end
