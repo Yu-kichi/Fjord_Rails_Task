@@ -1,7 +1,7 @@
-<%if @user.portrait.attached?%>
-  <p><strong>Portrait:<div class = "image_tag"><%= image_tag @user.portrait.variant(resize_to_limit:[400,400])%>
+<% if @user.portrait.attached? %>
+  <p><strong><%= t (".Portrait") %><div class="image_tag"><%= image_tag @user.portrait.variant(resize_to_limit: [400, 400]) %>
   </div></strong></p>
-<%end%> 
+<% end %>
 
 <p><h1><strong><%= User.human_attribute_name(:name) %> :</strong><%= "#{@user.name}" %></h1></p>
 <p><strong><%= User.human_attribute_name(:email) %> :</strong> <%= @user.email %></p>
@@ -11,6 +11,6 @@
 <p><strong><%= t(".Number of books posted") %>：</strong><%= @book_count %><p>
 
 <% if current_user == @user %>
-  <%= link_to t("directory.link.Edit"), edit_user_path(@user) %> |
-  <%= link_to "Edit password", edit_user_registration_path, class: "navbar-link" %>
+  <%= link_to t("link.Edit"), edit_user_path(@user) %> |
+  <%= link_to t("link.Edit password"), edit_user_registration_path, class: "navbar-link" %>
 <% end %>

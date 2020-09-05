@@ -12,8 +12,6 @@
                )
 end
 
-# title = Faker::Book.title
-# author = Faker::Book.author
 User.all.each do |user|
   3.times do |n|
     title = Faker::Book.title

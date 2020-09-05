@@ -29,13 +29,16 @@ ja:
         address: 住所
         zip_code: 郵便番号
         introduction: 自己紹介文
+        portrait: プロフィール画像
     models:
       user: ユーザー
   users:
     show:
       Number of books posted: 投稿した本の件数
+      Portrait: プロフィール画像
     edit:
       Editing User: プロフィールの編集
+      Please_use_one_of_'png'_'jpg'_or_'jpeg'_for_portrait_file_format: プロフィール画像のファイル形式は'png', 'jpg', 'jpeg' のいずれかを使用してください。
     confirmations:
       confirmed: メールアドレスが確認できました。
       new:
@@ -145,6 +148,7 @@ ja:
       expired: の有効期限が切れました。新しくリクエストしてください。
       not_found: は見つかりませんでした。
       not_locked: は凍結されていません。
+      content_type_invalid: "のファイル形式は'png', 'jpg', 'jpeg' のいずれかを使用してください。"
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"

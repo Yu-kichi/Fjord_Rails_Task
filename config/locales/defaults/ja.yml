@@ -6,6 +6,7 @@ ja:
     Destroy: 削除
     Top: トップページへ戻る
     Logout: ログアウト
+    Edit password: パスワードを変更
   flash:
     destroy: 削除しました！
     create: 作成しました！

@@ -31,6 +31,8 @@
         <% if current_user && current_user.id == book.user.id %>
           <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Edit"), edit_book_path(book) %></button></td>
           <td><button type="button" class="btn btn-outline-danger btn-sm"><%= link_to t("link.Destroy"), book, method: :delete, data: { confirm: t("modal.confirm") } %></button></td>
+        <% else %>
+        <td></td><td></td>
         <% end %>
       </tr>
     <% end %>
