@@ -5,14 +5,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :portrait
   has_many :books, dependent: :destroy
-  
-  #フォロー側
-  #外部キーには親の主キーを設定する。
-  has_many :active_relationships, class_name: "FollowFollower", foreign_key: :following_id,dependent: :destroy
+
+  # フォロー側
+  # 外部キーには親の主キーを設定する。
+  has_many :active_relationships, class_name: "FollowFollower", foreign_key: :following_id, dependent: :destroy
   # 中間テーブルを介して「follower」モデルのUser(フォローされた側)を集めることを「followings」と定義
   has_many :followings, through: :active_relationships, source: :follower
-  
-  #フォローされる側、active側の逆となる
+
+  # フォローされる側、active側の逆となる
   has_many :passive_relationships, class_name: "FollowFollower", foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
 
@@ -39,15 +39,22 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 500 }
   validates :zip_code,  length: { maximum: 10 }
 <<<<<<< HEAD
+<<<<<<< HEAD
   validates :portrait, content_type: ["image/png", "image/jpg", "image/jpeg"]
 =======
   #ここで attached: true, になっているせいで新規登録できなくなる。コメントアウトすれば登録できる！前回の課題のところで修正すべき。
+=======
+  # ここで attached: true, になっているせいで新規登録できなくなる。コメントアウトすれば登録できる！前回の課題のところで修正すべき。
+>>>>>>> f97b73f... Let through lint
   validates :portrait, content_type: ["image/png", "image/jpg", "image/jpeg"]
 
-  def followed_by?(user)#ここは必要か調べる。
+  def followed_by?(user) # ここは必要か調べる。
     # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
     passive_relationships.find_by(following_id: user.id).present?
   end
+<<<<<<< HEAD
   
 >>>>>>> f683a25... modify views
+=======
+>>>>>>> f97b73f... Let through lint
 end

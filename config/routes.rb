@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'follow_followers/create'
-  get 'follow_followers/destroy'
+  get "follow_followers/create"
+  get "follow_followers/destroy"
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   scope "(:locale)", locale: /en|ja/ do
@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :create] do
       resources :books, only: [:index]
       resource :follow_followers, only: [:create, :destroy]
-      get :followings, on: :member 
-      get :followers, on: :member 
+      get :followings, on: :member
+      get :followers, on: :member
     end
   end
 end

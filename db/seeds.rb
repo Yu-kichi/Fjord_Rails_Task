@@ -12,8 +12,8 @@
                password: "password",
                uid: "uid+#{n}"
                )
-  user = User.find(n+1)             
-  user.portrait.attach(io: File.open('public/piyo.jpg'), filename: 'piyo.jpg')
+  user = User.find(n+1)
+  user.portrait.attach(io: File.open("public/piyo.jpg"), filename: "piyo.jpg")
 end
 
 User.all.each do |user|
