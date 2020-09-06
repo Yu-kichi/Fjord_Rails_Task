@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_115108) do
+ActiveRecord::Schema.define(version: 2020_09_05_060401) do
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -43,6 +42,16 @@ ActiveRecord::Schema.define(version: 2020_09_02_115108) do
     t.string "picture"
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "follow_followers", force: :cascade do |t|
+    t.integer "following_id"
+    t.integer "follower_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id"], name: "index_follow_followers_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_follow_followers_on_following_id_and_follower_id", unique: true
+    t.index ["following_id"], name: "index_follow_followers_on_following_id"
   end
 
   create_table "users", force: :cascade do |t|

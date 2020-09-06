@@ -3,13 +3,17 @@
 20.times do |n|
   name = Faker::Name.name
   address = Faker::Address.city
+  uid = SecureRandom.uuid
   User.create!(name: name,
                introduction: "#{name}ですよろしく！",
                email: "#{n+1}@example.com",
                address: address,
                zip_code: 21345678,
-               password: "password"
+               password: "password",
+               uid: "uid"
                )
+  #user = User.find(n)             
+  #user.portrait.attach(io: File.open('public/piyo.jpg'))
 end
 
 User.all.each do |user|

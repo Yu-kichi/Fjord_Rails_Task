@@ -10,6 +10,15 @@
 <p><strong><%= User.human_attribute_name(:introduction) %> :</strong> <%= @user.introduction %></p>
 <p><strong><%= t(".Number of books posted") %>：</strong><%= @book_count %><p>
 
+<p><%=link_to "フォロー一覧", followings_user_path(@user.id) %></p>
+<p><%=link_to "フォロワー一覧", followers_user_path(@user.id) %></p>
+   <% if current_user != @user %>
+        <% if @user.followed_by?(current_user) %>
+            <p><%=link_to "フォロー中", user_follow_followers_path(@user.id), method: :delete,class: "btn btn-primary" %></p>
+        <% else %>
+            <p><%=link_to "フォローする", user_follow_followers_path(@user.id), method: :post,class: "btn btn-primary" %></p>
+        <% end %>
+    <% end %>
 <% if current_user == @user %>
   <%= link_to t("link.Edit"), edit_user_path(@user) %> |
   <%= link_to t("link.Edit password"), edit_user_registration_path, class: "navbar-link" %>
