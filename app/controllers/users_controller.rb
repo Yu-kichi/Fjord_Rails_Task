@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i[edit update ]
 
   def index
+<<<<<<< HEAD
     @users = User.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
+=======
+    @users = User.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE) 
+>>>>>>> f683a25... modify views
     @time = Time.now
   end
 
@@ -29,6 +33,7 @@ class UsersController < ApplicationController
   def followings
     user = User.find(params[:id])
     @users = user.followings.with_attached_portrait.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
+    #@users = user.followings.with_attached_portrait.page(params[:page]).per(1)
     #下のような.recentがこのままだと使えない。
     #@users = user.includes([:portrait_attachment]).page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
     #これだとN+１は起きないが全ユーザーを取得してしまう。。ユーザー一覧ページならおk
@@ -37,7 +42,6 @@ class UsersController < ApplicationController
 
   def followers
     user = User.find(params[:id])
-    #@users = user.followers
     @users = user.followers.with_attached_portrait.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
   end
 

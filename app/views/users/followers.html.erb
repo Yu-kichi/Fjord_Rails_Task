@@ -1,19 +1,21 @@
-<h1>フォロワー一覧</h1>
-
+<p>
+  <h1><%= t(".Followers list")%></h1>
+</p>
 <% @users.each do |user| %>
   <hr>
   <% if user.portrait.attached? %>
-  <p><strong><div class="image_tag"><%= image_tag user.portrait.variant(resize_to_limit: [100, 100]) %>
+  <p><strong><div class="image_tag"><%= image_tag user.portrait.variant(resize_to_limit: [100, 100]),class: "rounded-circle" %>
   </div></strong></p>
 <% end %>
-  <p><span>name: </span><%= user.name%></p>
-  <p><span>email: </span><%= link_to user.email, user_path(user.id) %></p>
-  <p><span>introduction: </span><%= user.introduction%></p>
+  <p><%= User.human_attribute_name(:name) %> : <%= user.name%></p>
+  <p><%= User.human_attribute_name(:email) %> : <%= link_to user.email, user_path(user.id) %></p>
+  <p><%= User.human_attribute_name(:introduction) %> : <%= user.introduction%></p>
     <% if current_user != user %>
         <% if user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー済み", user_follow_followers_path(user.id), method: :delete %></p>
+            <p><%=link_to t("link.following"), user_follow_followers_path(user.id), method: :delete , class: "btn btn-primary"%></p>
         <% else %>
-            <p><%=link_to "フォローする", user_follow_followers_path(user.id), method: :post %></p>
+            <p><%=link_to t("link.follow"), user_follow_followers_path(user.id), method: :post, class: "btn btn-outline-primary" %></p>
         <% end %>
     <% end %>
 <% end %>
+<div class="paginate mt-4"><%= paginate @users %></div>

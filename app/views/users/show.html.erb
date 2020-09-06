@@ -9,17 +9,18 @@
 <p><strong><%= User.human_attribute_name(:zip_code) %> :</strong> <%= @user.zip_code %></p>
 <p><strong><%= User.human_attribute_name(:introduction) %> :</strong> <%= @user.introduction %></p>
 <p><strong><%= t(".Number of books posted") %>：</strong><%= @book_count %><p>
-
-<p><%=link_to "フォロー一覧", followings_user_path(@user.id) %></p>
-<p><%=link_to "フォロワー一覧", followers_user_path(@user.id) %></p>
-   <% if current_user != @user %>
+<p><strong><%=  t (".Follows")%> : </strong><%= @user.followings.count %><p>
+<p><strong><%=  t (".Followers")%> : </strong><%= @user.followers.count %><p>
+<p><strong><%=link_to t(".Follows list"), followings_user_path(@user.id) %> |
+<%=link_to t(".Followers list"), followers_user_path(@user.id) %></strong></p>
+   <% if current_user && current_user != @user %>
         <% if @user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー中", user_follow_followers_path(@user.id), method: :delete,class: "btn btn-primary" %></p>
+            <p><%=link_to t("link.following"), user_follow_followers_path(@user.id), method: :delete,class: "btn btn-primary" %></p>
         <% else %>
-            <p><%=link_to "フォローする", user_follow_followers_path(@user.id), method: :post,class: "btn btn-primary" %></p>
+            <p><%=link_to t("link.follow"), user_follow_followers_path(@user.id), method: :post,class: "btn btn-outline-primary" %></p>
         <% end %>
     <% end %>
 <% if current_user == @user %>
   <%= link_to t("link.Edit"), edit_user_path(@user) %> |
-  <%= link_to t("link.Edit password"), edit_user_registration_path, class: "navbar-link" %>
+  <%= link_to t("link.Edit password"), edit_user_registration_path%>
 <% end %>
