@@ -10,7 +10,7 @@ class BooksController < ApplicationController
       @user = User.find(params[:user_id]) # これで現在ログイン中の自分のものが表示できる。
       @books = @user.books.page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
     else
-      @books = Book.includes(:user).page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
+      @books = Book.eager_load(:user).page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
     end
   end
 
