@@ -28,5 +28,5 @@ class User < ApplicationRecord
   validates :address, length: { maximum: 80 }
   validates :introduction, length: { maximum: 500 }
   validates :zip_code,  length: { maximum: 10 }
-  validates :portrait, attached: true, content_type: ["image/png", "image/jpg", "image/jpeg"]
+  validates :portrait, content_type: ["image/png", "image/jpg", "image/jpeg"]
 end
