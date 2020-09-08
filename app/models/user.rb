@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_one_attached :portrait
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i(github)
 
@@ -26,4 +28,5 @@ class User < ApplicationRecord
   validates :address, length: { maximum: 80 }
   validates :introduction, length: { maximum: 500 }
   validates :zip_code,  length: { maximum: 10 }
+  validates :portrait, content_type: ["image/png", "image/jpg", "image/jpeg"]
 end

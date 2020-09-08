@@ -38,6 +38,12 @@
     <%= form.text_area :introduction, autofocus: true, class: "form-control", autocomplete: "introduction" %>
   </div>
 
+   <div class="field">
+    <%= form.label :portrait %>
+    <%= form.file_field :portrait, direct_upload: true %>
+    <small class="form-text text-muted"><%= t(".Please_use_one_of_'png'_'jpg'_or_'jpeg'_for_portrait_file_format.") %></small>
+  </div>
+
   <div class="actions">
     <%= form.submit class: "btn btn-primary " %>
   </div>
