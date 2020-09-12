@@ -41,6 +41,6 @@ class User < ApplicationRecord
   validates :portrait, content_type: ["image/png", "image/jpg", "image/jpeg"]
 
   def followed_by?(user)
-    passive_relationships.find_by(following_id: user.id).present?
+    passive_relationships.exists?(following_id: user.id)
   end
 end

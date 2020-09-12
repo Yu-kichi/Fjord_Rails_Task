@@ -9,6 +9,7 @@ en:
     destroy: Book was successfully destroyed.
     create: Book was successfully created.
     update: Book was successfully updated.
+    failure: Failed to save data.
   modal:
     confirm: Are you sure?  
   time:

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get "follow_followers/create"
-  get "follow_followers/destroy"
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   scope "(:locale)", locale: /en|ja/ do

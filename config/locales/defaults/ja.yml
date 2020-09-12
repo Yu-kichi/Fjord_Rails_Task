@@ -13,6 +13,7 @@ ja:
     destroy: 削除しました！
     create: 作成しました！
     update: 更新しました！
+    failure: データの保存に失敗しました！
   modal:
     confirm: 本当に削除しますか？
   time:

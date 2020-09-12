@@ -14,9 +14,9 @@
 <p><strong><%= link_to t(".Follows list"), followings_user_path(@user.id) %> |
 <%= link_to t(".Followers list"), followers_user_path(@user.id) %></strong></p>
 
-<% if current_user && current_user != @user %>
+<% if user_signed_in? && current_user != @user %>
   <% if @user.followed_by?(current_user) %>
-    <p><%= link_to t("link.following"), user_follow_followers_path(@user.id), method: :delete, class: "btn btn-primary" %></p>
+    <p><%= link_to t("link.following"), user_follow_followers_path(@user.id), method: :delete, class: "btn btn-primary text-white" %></p>
   <% else %>
     <p><%= link_to t("link.follow"), user_follow_followers_path(@user.id), method: :post, class: "btn btn-outline-primary" %></p>
   <% end %>

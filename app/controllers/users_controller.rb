@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update ]
+  before_action :set_user, only: %i[show edit update followings followers]
   before_action :set_locale
   before_action :correct_user, only: %i[edit update ]
 
@@ -27,13 +27,11 @@ class UsersController < ApplicationController
   end
 
   def followings
-    user = User.find(params[:id])
-    @users = user.followings.with_attached_portrait.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
+    @users = @user.followings.with_attached_portrait.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
   end
 
   def followers
-    user = User.find(params[:id])
-    @users = user.followers.with_attached_portrait.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
+    @users = @user.followers.with_attached_portrait.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
   end
 
   private
