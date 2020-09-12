@@ -1,0 +1,26 @@
+<%= form_with(model: @report, local: true) do |form| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t("errors.template.header", model: Report, count: @report.errors.count) %></h2>
+      <ul>
+        <% @report.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, autofocus: true, class: "form-control", autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, autofocus: true, class: "form-control", autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,6 @@
+<p>
+  <h1><%#= t ".New Book" %>新規日報作成</h1>
+</p>
+<%= render "form", book: @report %>
+
+<%= link_to t("link.Back"), reports_path %>

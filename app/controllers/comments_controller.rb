@@ -27,6 +27,7 @@ class CommentsController < ApplicationController
     locale,resource, id = request.path.split('/')[1,3]
     @commentable = resource.singularize.classify.constantize.find(id)
     @comment = @commentable.comments.new(comment_params)
+    #@comment = @commentable.comments.new(comment_params.merge(user: current_user))
     if @comment.save
       redirect_to @commentable, notice: 'Comment was successfully created.'
     else

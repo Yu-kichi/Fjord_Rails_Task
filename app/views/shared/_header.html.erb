@@ -3,6 +3,7 @@
     <div class="container">
       <div class="navbar-brand"><%= link_to t("Top"), root_path %></div>
       <%= link_to t("activerecord.models.user"), users_path %>
+      <%= link_to "日報", reports_path %>
   <% if user_signed_in? %>
     <%= link_to current_user.name, current_user %>
     <%= link_to t("directory.link.Logout"), destroy_user_session_path, method: :delete, class: "navbar-link" %>
