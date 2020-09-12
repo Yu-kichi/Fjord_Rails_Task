@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @comment.body %>
+</p>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>
+----
+<h3>コメント</h3>
+<%#commentable.comments.each do |comment| %>
+  <div classs = "well">
+  <%#= comment.body%>
+  </div>
+<%#end%>
