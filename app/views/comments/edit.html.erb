@@ -5,7 +5,7 @@
 <%#= link_to 'Show', @comment %> |
 <%#= link_to 'Back', comments_path %>
 <%#ここのformの書き方がわからん。。%>
-<%= form_with model:  [commentable, Comment.new] do |form| %>
+<%= form_with model:  [@book,comment] do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>

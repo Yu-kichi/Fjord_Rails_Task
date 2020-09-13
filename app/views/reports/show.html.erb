@@ -16,13 +16,15 @@
 <% end %>
 <%= link_to t("link.Back"), reports_path %><br>
 
+<h1 class = "mt-5">コメント一覧</h1>
 <% @report.comments.each do |comment| %>
   <%= comment.body %>
-  by:<%= comment.user.name%>
+  コメントした人:<%= comment.user.name%>
   <%= l comment.updated_at, format: :short %>
 
 <% if user_signed_in? && current_user.id == comment.user.id %>
-    <%= link_to t("link.Edit"), edit_report_comment_path(comment) %> 
+    <%= link_to t("link.Edit"), edit_report_comment_path(comment) %> |
+    <%= link_to t('link.Destroy'), [@report,comment], method: :delete, data: { confirm: t('flash.confirm') } %>
   <% end %>
 <hr>
 <% end %>

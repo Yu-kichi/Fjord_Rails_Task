@@ -46,7 +46,8 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   def destroy
     @comment.destroy
-    redirect_to comments_url, notice: 'Comment was successfully destroyed.'
+    #動作が簡単になるようにルートまで飛ばしてる。できればコメントを消したページに飛ばしたい。
+    redirect_to root_url, notice: 'Comment was successfully destroyed.'
   end
 
   private

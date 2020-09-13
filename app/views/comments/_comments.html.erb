@@ -1,10 +1,9 @@
 <p>
-<h3>コメントda</h3>
+<h3>コメント投稿欄</h3>
 </p>
 
 <%= form_with model: [commentable, Comment.new] do |form| %>
   <%= form.text_area :body, autofocus: true, class: "form-control", autofocus: true, class: "form-control"  %><br>
   <%= form.submit class: "btn btn-primary"%>
 <% end %>
-
 
