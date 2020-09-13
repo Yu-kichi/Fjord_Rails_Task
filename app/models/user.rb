@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one_attached :portrait
   has_many :books, dependent: :destroy
   has_many :reports, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # フォロー側
   # 外部キーには親の主キーを設定する。
   has_many :active_relationships, class_name: "FollowFollower", foreign_key: :following_id, dependent: :destroy

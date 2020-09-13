@@ -1,6 +1,29 @@
-<h1>Editing Comment</h1>
+<h1>Editing Commentだよ</h1>
 
-<%= render 'form', comment: @comment %>
+<%#= render 'form', comment: @comment %>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+<%#= link_to 'Show', @comment %> |
+<%#= link_to 'Back', comments_path %>
+<%#ここのformの書き方がわからん。。%>
+<%= form_with model:  [commentable, Comment.new] do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -14,19 +14,17 @@
 <% if user_signed_in? && current_user.id == @report.user.id %>
   <%= link_to t("link.Edit"), edit_report_path(@report) %> |
 <% end %>
-<%= link_to t("link.Back"), reports_path %>
+<%= link_to t("link.Back"), reports_path %><br>
 
-<h3>コメント</h3>
-<%@report.comments.each do |comment| %>
-  <div classs = "well">
-  <%= comment.body%>
-  </div>
-<%end%>
-<%# <%= form_with model: [commentable, Comment.new] do |form| %>
-  <%#= form.text_area :body %><br>
-  <%#= form.submit %>
-<%# end %> 
-<%= form_for([@report, @report.comments.build]) do |f| %>
-  <%= f.text_field :body %>
-  <%= f.submit %>
-<% end %> 
+<% @report.comments.each do |comment| %>
+  <%= comment.body %>
+  by:<%= comment.user.name%>
+  <%= l comment.updated_at, format: :short %>
+
+<% if user_signed_in? && current_user.id == comment.user.id %>
+    <%= link_to t("link.Edit"), edit_report_comment_path(comment) %> 
+  <% end %>
+<hr>
+<% end %>
+
+<%= render partial: 'comments/comments', locals: { commentable: @report } %>
