@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  #resources :comments
+  # resources :comments
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   scope "(:locale)", locale: /en|ja/ do
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :reports do
       resources :comments
     end
-    resources :books do 
+    resources :books do
       resources :comments
     end
     devise_for :users, skip: :omniauth_callbacks, controllers: {

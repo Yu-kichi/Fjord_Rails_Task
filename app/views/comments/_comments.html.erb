@@ -1,18 +1,17 @@
-<h2 class = "mt-5"><%=t ".List_of_comments"  %></h2>
+<h2 class="mt-5"><%= t ".List_of_comments" %></h2>
 <% commentable.comments.each do |comment| %>
   <%= comment.body %>
-  <%= t ".Contributor"%>:<%= comment.user.name%>
+  <%= t ".Contributor" %>:<%= comment.user.name %>
   <%= l comment.updated_at, format: :short %>
 
 <% if user_signed_in? && current_user.id == comment.user.id %>
-    <%= link_to t("link.Edit"), [:edit, commentable,comment]  %> |
-    <%= link_to t('link.Destroy'), [commentable,comment], method: :delete, data: { confirm: t('flash.confirm') } %>
+    <%= link_to t("link.Edit"), [:edit, commentable, comment] %> |
+    <%= link_to t("link.Destroy"), [commentable, comment], method: :delete, data: { confirm: t("flash.confirm") } %>
   <% end %>
 <hr>
 <% end %>
 
 <%= form_with model: [commentable, Comment.new] do |form| %>
-  <%= form.text_area :body, autofocus: true, class: "form-control", autofocus: true, class: "form-control"  %><br>
-  <%= form.submit class: "btn btn-primary"%>
+  <%= form.text_area :body, autofocus: true, class: "form-control", autofocus: true, class: "form-control" %><br>
+  <%= form.submit class: "btn btn-primary" %>
 <% end %>
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUserIdComments < ActiveRecord::Migration[6.0]
   def up
     add_reference :comments, :user, null: false, index: true

@@ -1,6 +1,6 @@
-<h1><%=t ".Editing_Comment"%></h1>
+<h1><%= t ".Editing_Comment" %></h1>
 
-<%= form_with model:  [@commentable,@comment] do |form| %>
+<%= form_with model:  [@commentable, @comment] do |form| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -14,7 +14,7 @@
 
   <div class="field ">
     <%= form.label :body %>
-    <%= form.text_area :body, autofocus: true, class: "form-control", autofocus: true, class: "form-control"  %><br>
+    <%= form.text_area :body, autofocus: true, class: "form-control", autofocus: true, class: "form-control" %><br>
   </div>
 
   <div class="actions">
