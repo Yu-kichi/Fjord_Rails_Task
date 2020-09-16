@@ -25,16 +25,4 @@
 <% end %>
 <%= link_to t("link.Back"), books_path %><br>
 
-<h1 class = "mt-5">コメント一覧</h1>
-<% @book.comments.each do |comment| %>
-  <%= comment.body %>
-  by:<%= comment.user.name%>
-  <%= l comment.updated_at, format: :short %>
-
-<% if user_signed_in? && current_user.id == comment.user.id %>
-    <%= link_to t("link.Edit"),[:edit, @book,comment] %> ｜
-    <%= link_to t('link.Destroy'), [@book,comment], method: :delete, data: { confirm: t('flash.confirm') } %>
-<% end %>
-<hr>
-<% end %>
 <%= render partial: 'comments/comments', locals: { commentable: @book } %>

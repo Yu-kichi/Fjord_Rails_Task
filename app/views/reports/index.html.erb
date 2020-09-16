@@ -1,18 +1,18 @@
 <p>
   <% if @user %>
-    <h1>個人の日報<%#= t(".List of posted reports by", Contributor: "#{@user.name}") %></h1>
+    <h1><%= t(".List_of_posted_reports_by", Contributor: "#{@user.name}") %></h1>
   <% else %>
-    <h1>日報<%#= t ".reports" %></h1>
+    <h1><%= t ".Reports" %></h1>
   <% end %>
 </p>
 <br>
 <table class="table table-hover">
   <thead>
     <tr class="thead-dark">
-      <th><%#= report.human_attribute_name(:title) %>タイトル</th>
-      <th><%#= report.human_attribute_name(:memo) %>内容</th>
-      <th><%#= report.human_attribute_name(:user_id) %>投稿者</th>
-      <th><%#= report.human_attribute_name(:updated_at) %>更新日</th>
+      <th><%= Report.human_attribute_name(:title) %></th>
+      <th><%= Report.human_attribute_name(:body) %></th>
+      <th><%= Report.human_attribute_name(:user_id) %></th>
+      <th><%= Report.human_attribute_name(:updated_at) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -37,7 +37,7 @@
 <br>
 <div class="text-monospace bg-white">
   <% if current_user %>
-    <button type="button" class="btn btn-outline-info"><%= link_to t(".New report"), new_report_path %></button>
+    <button type="button" class="btn btn-outline-info"><%= link_to t(".New_report"), new_report_path %></button>
   <% end %>
   <div class="paginate mt-4"><%= paginate @reports %></div>
 </div>

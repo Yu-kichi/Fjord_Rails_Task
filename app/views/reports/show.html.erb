@@ -1,13 +1,13 @@
 <p>
   <h1>
-    <strong><%#= @report.human_attribute_name(:title) %>タイトル:</strong>
+    <strong><%= Report.human_attribute_name(:title) %></strong>
     <%= @report.title %>
   </h1>
 </p>
-<strong><p><%#= @report.human_attribute_name(:user_id) %>name：<strong>
+<strong><p><%= Report.human_attribute_name(:user_id) %><strong>
 <%= @user.name %></p>
 <p>
-  <strong><%#= @report.human_attribute_name(:body) %>中身:</strong>
+  <strong><%= Report.human_attribute_name(:body) %></strong>
   <%= simple_format(auto_link_filter(@report.body)) %>
 </p>
 
@@ -15,18 +15,5 @@
   <%= link_to t("link.Edit"), edit_report_path(@report) %> |
 <% end %>
 <%= link_to t("link.Back"), reports_path %><br>
-
-<h1 class = "mt-5">コメント一覧</h1>
-<% @report.comments.each do |comment| %>
-  <%= comment.body %>
-  コメントした人:<%= comment.user.name%>
-  <%= l comment.updated_at, format: :short %>
-
-<% if user_signed_in? && current_user.id == comment.user.id %>
-    <%= link_to t("link.Edit"), [:edit, @report,comment]  %> |
-    <%= link_to t('link.Destroy'), [@report,comment], method: :delete, data: { confirm: t('flash.confirm') } %>
-  <% end %>
-<hr>
-<% end %>
 
 <%= render partial: 'comments/comments', locals: { commentable: @report } %>

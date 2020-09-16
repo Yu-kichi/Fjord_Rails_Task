@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      comment: comment         
+    attributes:                     
+      comment:
+        id: id
+        body: Comment
+        user_id: Contributor
+  attributes:
+    created_at: Created_at
+    updated_at: Updated_at
+

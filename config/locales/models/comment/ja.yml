@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      comment: コメント          
+    attributes:                     
+      comment:
+        id: ID
+        body: コメント
+        user_id: 投稿者
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
+
