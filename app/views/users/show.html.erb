@@ -10,6 +10,7 @@
 <p><strong><%= User.human_attribute_name(:introduction) %> :</strong> <%= @user.introduction %></p>
 <p><strong><%= t(".Number of books posted") %>：</strong><%= link_to @book_count, user_books_path(@user) %><p>
 <p><strong><%= t(".Number of reports posted") %>：</strong><%= link_to @report_count, user_reports_path(@user) %><p>
+<p><strong><%= t(".Number of comments posted") %>：</strong><%= @comments_count %><p>
 <p><strong><%= t (".Follows") %> : </strong><%= @user.followings.count %><p>
 <p><strong><%= t (".Followers") %> : </strong><%= @user.followers.count %><p>
 <p><strong><%= link_to t(".Follows list"), followings_user_path(@user.id) %> |

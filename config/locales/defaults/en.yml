@@ -6,9 +6,9 @@ en:
     Destroy: Destroy
     Top: Top
   flash:
-    destroy: Book was successfully destroyed.
-    create: Book was successfully created.
-    update: Book was successfully updated.
+    destroy: Successfully destroyed.
+    create: Successfully created.
+    update: Successfully updated.
     failure: Failed to save data.
   modal:
     confirm: Are you sure?  
