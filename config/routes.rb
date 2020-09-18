@@ -21,7 +21,6 @@ Rails.application.routes.draw do
       resources :books, only: [:index]
       resources :reports, only: [:index]
       resource :follow_followers, only: [:create, :destroy]
-      resources :comments
       get :followings, on: :member
       get :followers, on: :member
     end
