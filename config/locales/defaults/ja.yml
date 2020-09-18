@@ -7,10 +7,13 @@ ja:
     Top: トップページへ戻る
     Logout: ログアウト
     Edit password: パスワードを変更
+    follow: フォローする
+    following: フォロー中
   flash:
     destroy: 削除しました！
     create: 作成しました！
     update: 更新しました！
+    failure: データの保存に失敗しました！
   modal:
     confirm: 本当に削除しますか？
   time:

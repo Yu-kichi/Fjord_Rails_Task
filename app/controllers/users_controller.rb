@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update ]
+  before_action :set_user, only: %i[show edit update followings followers]
   before_action :set_locale
   before_action :correct_user, only: %i[edit update ]
 
@@ -24,6 +24,14 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def followings
+    @users = @user.followings.with_attached_portrait.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
+  end
+
+  def followers
+    @users = @user.followers.with_attached_portrait.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
   end
 
   private

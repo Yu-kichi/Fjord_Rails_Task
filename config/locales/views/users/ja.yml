@@ -33,9 +33,17 @@ ja:
     models:
       user: ユーザー
   users:
+    followers:
+      Followers list: フォロワー一覧
+    followings:  
+      Follows list: フォロー一覧
     show:
       Number of books posted: 投稿した本の件数
       Portrait: プロフィール画像
+      Follows: フォロー数
+      Followers: フォロワー数
+      Follows list: フォロー一覧
+      Followers list: フォロワー一覧
     edit:
       Editing User: プロフィールの編集
       Please_use_one_of_'png'_'jpg'_or_'jpeg'_for_portrait_file_format: プロフィール画像のファイル形式は'png', 'jpg', 'jpeg' のいずれかを使用してください。

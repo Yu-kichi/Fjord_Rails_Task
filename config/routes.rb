@@ -13,6 +13,9 @@ Rails.application.routes.draw do
      }
     resources :users, except: [:new, :create] do
       resources :books, only: [:index]
+      resource :follow_followers, only: [:create, :destroy]
+      get :followings, on: :member
+      get :followers, on: :member
     end
   end
 end

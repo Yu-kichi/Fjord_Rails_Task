@@ -1,17 +1,23 @@
 # frozen_string_literal: true
 
+# ユーザープロフィール作成
 20.times do |n|
   name = Faker::Name.name
   address = Faker::Address.city
+  uid = SecureRandom.uuid
   User.create!(name: name,
                introduction: "#{name}ですよろしく！",
                email: "#{n+1}@example.com",
                address: address,
                zip_code: 21345678,
-               password: "password"
+               password: "password",
+               uid: "uid+#{n}"
                )
+  user = User.find(n+1)
+  user.portrait.attach(io: File.open(Constants::SAMPLE_FILE), filename: Constants::SAMPLE_FILE_NAME)
 end
 
+# ユーザーがbookを投稿する
 User.all.each do |user|
   3.times do |n|
     title = Faker::Book.title
@@ -22,4 +28,12 @@ User.all.each do |user|
                        picture: nil,
                        )
   end
+end
+
+# user同士のフォロー関係を作成
+users = User.all
+user  = users.first
+followings = users[1..10]
+3.times do |n|
+  followings.each { |following| following.active_relationships.create(follower_id: user.id+n) }
 end
