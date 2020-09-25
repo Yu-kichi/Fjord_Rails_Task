@@ -6,9 +6,9 @@ en:
     Destroy: Destroy
     Top: Top
   flash:
-    destroy: Successfully destroyed.
-    create: Successfully created.
-    update: Successfully updated.
+    destroy: "%{model} was successfully destroyed."
+    create: "%{model} was successfully created."
+    update: "%{model} was successfully updated."
     failure: Failed to save data.
   modal:
     confirm: Are you sure?  

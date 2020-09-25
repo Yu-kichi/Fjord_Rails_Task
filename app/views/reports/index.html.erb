@@ -23,10 +23,10 @@
         <td><%= report.body.truncate(Constants::DISPLAYABLE_NUMBER_OF_CHARACTERS) %></td>
         <td><%= link_to report.user.name, user_reports_path(report.user.id) %></td>
         <td><%= l(report.created_at, format: :short) %></td>
-        <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Show"), report %></button></td>
+        <td><%= link_to t("link.Show"), report, class:"btn btn-outline-info btn-sm"%></td>
         <% if current_user && current_user.id == report.user.id %>
-          <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Edit"), edit_report_path(report) %></button></td>
-          <td><button type="button" class="btn btn-outline-danger btn-sm"><%= link_to t("link.Destroy"), report, method: :delete, data: { confirm: t("modal.confirm") } %></button></td>
+          <td><%= link_to t("link.Edit"), edit_report_path(report), class: "btn btn-outline-info btn-sm"%></td>
+          <td><%= link_to t("link.Destroy"), report, method: :delete, data: { confirm: t("modal.confirm") },class: "btn btn-outline-danger btn-sm" %></td>
         <% else %>
         <td></td><td></td>
         <% end %>
@@ -34,10 +34,9 @@
     <% end %>
   </tbody>
 </table>
-<br>
-<div class="text-monospace bg-white">
+<div class="text-monospace bg-white mt-4">
   <% if current_user %>
-    <button type="button" class="btn btn-outline-info"><%= link_to t(".New_report"), new_report_path %></button>
+   <%= link_to t(".New_report"), new_report_path ,class:"btn btn-outline-info"%>
   <% end %>
   <div class="paginate mt-4"><%= paginate @reports %></div>
 </div>

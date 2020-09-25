@@ -1,19 +1,22 @@
 <p>
   <h1>
-    <strong><%= Report.human_attribute_name(:title) %></strong>
+    <strong><%= Report.human_attribute_name(:title) %>:</strong>
     <%= @report.title %>
   </h1>
 </p>
-<strong><p><%= Report.human_attribute_name(:user_id) %><strong>
-<%= @user.name %></p>
 <p>
-  <strong><%= Report.human_attribute_name(:body) %></strong>
+  <strong><%= Report.human_attribute_name(:user_id) %>:<strong>
+  <%= @report.user.name %>
+</p>
+<p>
+  <strong><%= Report.human_attribute_name(:body) %>:</strong>
   <%= simple_format(auto_link_filter(@report.body)) %>
 </p>
 
-<% if user_signed_in? && current_user.id == @report.user.id %>
+<% if @report.editable?(current_user)%>
   <%= link_to t("link.Edit"), edit_report_path(@report) %> |
-<% end %>
-<%= link_to t("link.Back"), reports_path %><br>
+<%end %>
 
-<%= render partial: "comments/comments", locals: { commentable: @report } %>
+<%= link_to t("link.Back"), reports_path %>
+
+<%= render "comments/comments", commentable: @report %>

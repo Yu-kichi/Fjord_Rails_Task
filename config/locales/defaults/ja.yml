@@ -10,9 +10,9 @@ ja:
     follow: フォローする
     following: フォロー中
   flash:
-    destroy: 削除しました！
-    create: 作成しました！
-    update: 更新しました！
+    destroy: "%{model}を削除しました！"
+    create: "%{model}を作成しました！"
+    update: "%{model}を更新しました！"
     failure: データの保存に失敗しました！
   modal:
     confirm: 本当に削除しますか？

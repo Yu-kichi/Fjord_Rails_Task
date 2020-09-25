@@ -2,20 +2,19 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
-  before_action :correct_user, only: %i[edit update destroy]
+  before_action :correct_author, only: %i[edit update destroy]
 
   def index
     @time = Time.now
     if params[:user_id]
-      @user = User.find(params[:user_id]) # これで現在ログイン中の自分のものが表示できる。
-      @reports = @user.reports.page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
+      @user = User.find(params[:user_id]) #これで特定のユーザーのもののみを表示できる。
+      @reports = @user.reports.page(params[:page]).order_by_recent.per(Constants::DISPLAYABLE_USER_SIZE)
     else
-      @reports = Report.includes(:user).page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
+      @reports = Report.includes(:user).page(params[:page]).order_by_recent.per(Constants::DISPLAYABLE_USER_SIZE)
     end
   end
 
   def show
-    @user = @report.user
   end
 
   def new
@@ -28,7 +27,7 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.new(report_params)
     if @report.save
-      redirect_to @report, notice: t("flash.create")
+      redirect_to @report, notice: t("flash.create",model: Report)
     else
       render :new
     end
@@ -36,7 +35,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
-      redirect_to @report, notice: t("flash.update")
+      redirect_to @report, notice: t("flash.update",model: Report)
     else
       render :edit
     end
@@ -44,7 +43,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-    redirect_to reports_url, alert: t("flash.destroy")
+    redirect_to reports_url, alert: t("flash.destroy",model: Report)
   end
 
   private
@@ -56,7 +55,7 @@ class ReportsController < ApplicationController
       params.require(:report).permit(:title, :body,)
     end
 
-    def correct_user
+    def correct_author
       redirect_to(root_url)  unless current_user.id == @report.user.id
     end
 end

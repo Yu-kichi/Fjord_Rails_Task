@@ -7,4 +7,5 @@ module ApplicationHelper
     filter = HTML::Pipeline::AutolinkFilter.new(text)
     filter.call.html_safe
   end
+  
 end

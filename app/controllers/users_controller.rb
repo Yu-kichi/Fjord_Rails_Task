@@ -6,15 +6,11 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i[edit update ]
 
   def index
-    @users = User.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
+    @users = User.page(params[:page]).order_by_recent.per(Constants::DISPLAYABLE_USER_SIZE)
     @time = Time.now
   end
 
   def show
-    @book_count = @user.books.size
-    @report_count = @user.reports.size
-    @comments_count = @user.comments.size
-    @books = @user.books
   end
 
   def edit
@@ -22,7 +18,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: t("flash.update")
+      redirect_to @user, notice: t("flash.update",model: User)
     else
       render :edit
     end

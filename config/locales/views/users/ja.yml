@@ -38,9 +38,9 @@ ja:
     followings:  
       Follows list: フォロー一覧
     show:
-      Number of books posted: 投稿した本の件数
-      Number of reports posted: 投稿した日報の件数
-      Number of comments posted: 投稿したコメントの数
+      number_of_books_posted: 投稿した本の件数
+      number_of_reports_posted: 投稿した日報の件数
+      number_of_comments_posted: 投稿したコメントの数
       Portrait: プロフィール画像
       Follows: フォロー数
       Followers: フォロワー数

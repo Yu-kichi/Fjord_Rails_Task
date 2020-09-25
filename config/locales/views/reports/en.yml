@@ -3,7 +3,7 @@ en:
     index:
       New_report: New report
       Reports: Reports
-      List_of_posted_reports_by: "List of posted reports by%{Contributor}"
+      List_of_posted_reports_by: "List of posted reports by %{Contributor}"
     new: 
       New_Report: New_Report
     edit:

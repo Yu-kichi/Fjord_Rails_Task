@@ -20,9 +20,10 @@
   <strong><%= Book.human_attribute_name(:picture) %>:</strong>
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
-<% if user_signed_in? && current_user.id == @book.user.id %>
+
+<% if @book.editable?(current_user) %>
   <%= link_to t("link.Edit"), edit_book_path(@book) %> |
 <% end %>
-<%= link_to t("link.Back"), books_path %><br>
+<%= link_to t("link.Back"), books_path %>
 
-<%= render partial: "comments/comments", locals: { commentable: @book } %>
+<%= render "comments/comments", commentable: @book %>
