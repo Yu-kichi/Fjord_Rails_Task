@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params.merge(user: current_user))
     if @comment.save
-      redirect_to @commentable, notice: t("flash.create",model: Comment)
+      redirect_to @commentable, notice: t("flash.create", model: Comment)
     else
       render :new
     end
@@ -23,15 +23,15 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to @commentable, notice: t("flash.update",model: Comment)
+      redirect_to @commentable, notice: t("flash.update", model: Comment)
     else
-      render :edit 
+      render :edit
     end
   end
 
   def destroy
     @comment.destroy
-    redirect_to @commentable,  alert: t("flash.destroy",model: Comment)
+    redirect_to @commentable,  alert: t("flash.destroy", model: Comment)
   end
 
   private

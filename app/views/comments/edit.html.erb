@@ -1,11 +1,10 @@
 <h1><%= t ".editing_Comment" %></h1>
-
-<%= form_with model:  [@commentable, @comment] do |form| %>
+<%= form_with(model: [@commentable, @comment], local: true) do |form| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <h2><%= t("errors.template.header", model: Comment, count: @comment.errors.count) %></h2>
       <ul>
-        <% comment.errors.full_messages.each do |message| %>
+        <% @comment.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

@@ -13,9 +13,9 @@
   <%= simple_format(auto_link_filter(@report.body)) %>
 </p>
 
-<% if @report.editable?(current_user)%>
+<% if @report.editable?(current_user) %>
   <%= link_to t("link.Edit"), edit_report_path(@report) %> |
-<%end %>
+<% end %>
 
 <%= link_to t("link.Back"), reports_path %>
 

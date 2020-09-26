@@ -5,7 +5,7 @@
   <%= t ".contributor" %>:<%= comment.user.name %>
   <%= l comment.updated_at, format: :short %>
 
-  <% if comment.editable?(current_user)%>
+  <% if comment.editable?(current_user) %>
     <%= link_to t("link.Edit"), [:edit, commentable, comment] %> |
     <%= link_to t("link.Destroy"), [commentable, comment], method: :delete, data: { confirm: t("modal.confirm") } %>
   <% end %>
@@ -13,7 +13,8 @@
 <% end %>
 
 <% if user_signed_in? %>
-  <%= form_with model: [commentable, Comment.new] do |form| %>
+  <h2><%= t ".post_comment" %></h2>
+  <%= form_with(model: [commentable, Comment.new], local: true)do |form| %>
     <%= form.text_area :body,  class: "form-control" %><br>
     <%= form.submit class: "btn btn-primary" %>
   <% end %>
