@@ -1,8 +1,8 @@
 <p>
   <% if @user %>
-    <h1><%= t(".List_of_posted_reports_by", Contributor: "#{@user.name}") %></h1>
+    <h1><%= t(".list_of_posted_reports_by", Contributor: "#{@user.name}") %></h1>
   <% else %>
-    <h1><%= t ".Reports" %></h1>
+    <h1><%= t ".reports" %></h1>
   <% end %>
 </p>
 <br>
@@ -23,12 +23,12 @@
         <td><%= report.body.truncate(Constants::DISPLAYABLE_NUMBER_OF_CHARACTERS) %></td>
         <td><%= link_to report.user.name, user_reports_path(report.user.id) %></td>
         <td><%= l(report.created_at, format: :short) %></td>
-        <td><%= link_to t("link.Show"), report, class: "btn btn-outline-info btn-sm" %></td>
-        <% if current_user && current_user.id == report.user.id %>
-          <td><%= link_to t("link.Edit"), edit_report_path(report), class: "btn btn-outline-info btn-sm" %></td>
-          <td><%= link_to t("link.Destroy"), report, method: :delete, data: { confirm: t("modal.confirm") }, class: "btn btn-outline-danger btn-sm" %></td>
+        <td><%= link_to t("link.show"), report, class: "btn btn-outline-info btn-sm" %></td>
+        <% if report.editable?(current_user) %>
+          <td><%= link_to t("link.edit"), edit_report_path(report), class: "btn btn-outline-info btn-sm" %></td>
+          <td><%= link_to t("link.destroy"), report, method: :delete, data: { confirm: t("modal.confirm") }, class: "btn btn-outline-danger btn-sm" %></td>
         <% else %>
-        <td></td><td></td>
+          <td></td><td></td>
         <% end %>
       </tr>
     <% end %>
@@ -36,7 +36,7 @@
 </table>
 <div class="text-monospace bg-white mt-4">
   <% if current_user %>
-   <%= link_to t(".New_report"), new_report_path, class: "btn btn-outline-info" %>
+   <%= link_to t(".new_report"), new_report_path, class: "btn btn-outline-info" %>
   <% end %>
   <div class="paginate mt-4"><%= paginate @reports %></div>
 </div>

@@ -2,16 +2,16 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
-  before_action :correct_user, only: %i[edit update destroy]
+  before_action :correct_author, only: %i[edit update destroy]
 
   def index
-    @time = Time.now
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @books = @user.books.page(params[:page]).order_by_recent.per(Constants::DISPLAYABLE_USER_SIZE)
+      @books = @user.books
     else
-      @books = Book.eager_load(:user).page(params[:page]).order_by_recent.per(Constants::DISPLAYABLE_USER_SIZE)
+      @books = Book.includes(:user)
     end
+    @books = @books.order_by_recent.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
   end
 
   def show
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.new(book_params)
     if @book.save
-      redirect_to @book, notice: t("flash.create", model: Book)
+      redirect_to @book, notice: t("flash.create", model: Book.model_name.human)
     else
       render :new
     end
@@ -36,7 +36,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to @book, notice: t("flash.update", model: Book)
+      redirect_to @book, notice: t("flash.update", model: Book.model_name.human)
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_url, alert: t("flash.destroy", model: Book)
+    redirect_to books_url, alert: t("flash.destroy", model: Book.model_name.human)
   end
 
   private
@@ -56,7 +56,7 @@ class BooksController < ApplicationController
       params.require(:book).permit(:title, :memo, :author, :picture)
     end
 
-    def correct_user
+    def correct_author
       redirect_to(root_url)  unless current_user.id == @book.user.id
     end
 end

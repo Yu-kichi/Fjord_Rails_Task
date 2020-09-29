@@ -1,10 +1,10 @@
 en:
   link:
-    Back: Back
-    Edit: Edit
-    Show: Show
-    Destroy: Destroy
-    Top: Top
+    back: Back
+    edit: Edit
+    show: Show
+    destroy: Destroy
+    top: Top
   flash:
     destroy: "%{model} was successfully destroyed."
     create: "%{model} was successfully created."

@@ -1,12 +1,12 @@
 ja:
   link:
-    Back: 戻る
-    Edit: 編集
-    Show: 詳細
-    Destroy: 削除
-    Top: トップページへ戻る
-    Logout: ログアウト
-    Edit password: パスワードを変更
+    back: 戻る
+    edit: 編集
+    show: 詳細
+    destroy: 削除
+    top: トップページへ戻る
+    logout: ログアウト
+    edit_password: パスワードを変更
     follow: フォローする
     following: フォロー中
   flash:

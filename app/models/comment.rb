@@ -4,4 +4,11 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
   belongs_to :user
   validates :body, presence: true
+  scope :order_by_recent, -> { order(updated_at: :desc) }
+
+  def editable?(current_user)
+    if current_user
+      user.id == current_user.id
+    end
+  end
 end

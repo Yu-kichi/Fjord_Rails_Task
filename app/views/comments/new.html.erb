@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <h2><%= t ".post_comment" %></h2>
+  <%= form_with(model: [@commentable, Comment.new],local: true)do |form| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t("errors.template.header", model: Comment, count: @comment.errors.count) %></h2>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= form.text_area :body,  class: "form-control" %><br>
+    <%= form.submit class: "btn btn-primary" %>
+  <% end %>
+<% end %>

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i[edit update ]
 
   def index
-    @users = User.page(params[:page]).order_by_recent.per(Constants::DISPLAYABLE_USER_SIZE)
+    @users = User.order_by_recent.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
     @time = Time.now
   end
 

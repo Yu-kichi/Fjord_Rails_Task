@@ -1,11 +1,11 @@
 en:
   books:
     index:
-      New Book: New Book
-      Books: Books
-      List of posted books by : "List of posted books by %{Contributor}"
+      new_book: New Book
+      books: Books
+      list_of_posted_books_by : "List of posted books by %{Contributor}"
     new: 
-      New Book: New Book
+      new_book: New Book
     edit:
-      Editing Book: Editing Book
+      editing_book: Editing Book
 

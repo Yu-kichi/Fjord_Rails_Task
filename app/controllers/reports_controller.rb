@@ -6,11 +6,12 @@ class ReportsController < ApplicationController
 
   def index
     if params[:user_id]
-      @user = User.find(params[:user_id]) # これで特定のユーザーのもののみを表示できる。
-      @reports = @user.reports.page(params[:page]).order_by_recent.per(Constants::DISPLAYABLE_USER_SIZE)
+      @user = User.find(params[:user_id])
+      @reports = @user.reports
     else
-      @reports = Report.includes(:user).page(params[:page]).order_by_recent.per(Constants::DISPLAYABLE_USER_SIZE)
+      @reports = Report.includes(:user)
     end
+    @reports = @reports.order_by_recent.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
   end
 
   def show
@@ -26,7 +27,7 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.new(report_params)
     if @report.save
-      redirect_to @report, notice: t("flash.create", model: Report)
+      redirect_to @report, notice: t("flash.create", model: Report.model_name.human)
     else
       render :new
     end
@@ -34,7 +35,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
-      redirect_to @report, notice: t("flash.update", model: Report)
+      redirect_to @report, notice: t("flash.update", model: Report.model_name.human)
     else
       render :edit
     end
@@ -42,7 +43,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-    redirect_to reports_url, alert: t("flash.destroy", model: Report)
+    redirect_to reports_url, alert: t("flash.destroy", model: Report.model_name.human)
   end
 
   private

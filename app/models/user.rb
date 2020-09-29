@@ -44,4 +44,6 @@ class User < ApplicationRecord
   def followed_by?(user)
     passive_relationships.exists?(following_id: user.id)
   end
+
+  scope :order_by_recent, -> { order(updated_at: :desc) }
 end

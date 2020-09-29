@@ -1,8 +1,8 @@
 <p>
   <% if @user %>
-    <h1><%= t(".List of posted books by", Contributor: "#{@user.name}") %></h1>
+    <h1><%= t(".list_of_posted_books_by", Contributor: "#{@user.name}") %></h1>
   <% else %>
-    <h1><%= t ".Books" %></h1>
+    <h1><%= t ".books" %></h1>
   <% end %>
 </p>
 <br>
@@ -27,12 +27,12 @@
         <td><%= link_to book.user.name, user_books_path(book.user.id) %></td>
         <td><%= "◯" if book.picture.present? %></td>
         <td><%= l(book.created_at, format: :short) %></td>
-        <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Show"), book %></button></td>
-        <% if current_user && current_user.id == book.user.id %>
-          <td><button type="button" class="btn btn-outline-info btn-sm"><%= link_to t("link.Edit"), edit_book_path(book) %></button></td>
-          <td><button type="button" class="btn btn-outline-danger btn-sm"><%= link_to t("link.Destroy"), book, method: :delete, data: { confirm: t("modal.confirm") } %></button></td>
+        <td><%= link_to t("link.show"), book, class: "btn btn-outline-info btn-sm" %></td>
+        <% if book.editable?(current_user) %>
+          <td><%= link_to t("link.edit"), edit_book_path(book), class: "btn btn-outline-info btn-sm" %></td>
+          <td><%= link_to t("link.destroy"), book, class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: t("modal.confirm") } %></td>
         <% else %>
-        <td></td><td></td>
+          <td></td><td></td>
         <% end %>
       </tr>
     <% end %>
@@ -41,7 +41,7 @@
 <br>
 <div class="text-monospace bg-white">
   <% if current_user %>
-    <button type="button" class="btn btn-outline-info"><%= link_to t(".New Book"), new_book_path %></button>
+    <%= link_to t(".new_book"), new_book_path, class: "btn btn-outline-info" %>
   <% end %>
   <div class="paginate mt-4"><%= paginate @books %></div>
 </div>

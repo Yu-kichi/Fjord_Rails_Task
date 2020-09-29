@@ -1,12 +1,12 @@
 en:
   reports:
     index:
-      New_report: New report
-      Reports: Reports
-      List_of_posted_reports_by: "List of posted reports by %{Contributor}"
+      new_report: New report
+      reports: Reports
+      list_of_posted_reports_by: "List of posted reports by %{Contributor}"
     new: 
-      New_Report: New_Report
+      new_report: New_Report
     edit:
-      Editing_report: Editing_report
+      editing_report: Editing_report
 
 

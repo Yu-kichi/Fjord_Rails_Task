@@ -1,4 +1,4 @@
-<h1><%= t ".editing_Comment" %></h1>
+<h1><%= t ".editing_comment" %></h1>
 <%= form_with(model: [@commentable, @comment], local: true) do |form| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
@@ -13,12 +13,12 @@
 
   <div class="field ">
     <%= form.label :body %>
-    <%= form.text_area :body, autofocus: true, class: "form-control", autofocus: true, class: "form-control" %><br>
+    <%= form.text_area :body, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit class: "btn btn-primary" %>
+    <%= form.submit class: "btn btn-primary mt-4" %>
   </div>
 <% end %>
 
-<%= link_to t("link.Back"), @commentable %>
+<%= link_to t("link.back"), @commentable %>
