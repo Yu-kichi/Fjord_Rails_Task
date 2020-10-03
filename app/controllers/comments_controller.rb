@@ -16,7 +16,17 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @commentable, notice: t("flash.create", model: Comment.model_name.human)
     else
-      render :new
+      case @commentable
+      when Book
+        @book = @commentable
+        render "books/show"
+      when Report
+        @report = @commentable
+        render "reports/show"
+      else
+        # 将来commentableが増えたとき、実装漏れにすぐ気づけるように例外を起こす
+        raise "Unknown type: #{@commentable}"
+      end
     end
   end
 

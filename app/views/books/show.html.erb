@@ -5,7 +5,7 @@
   </h1>
 </p>
 <strong><p><%= Book.human_attribute_name(:user_id) %>：<strong>
-<%= @user.name %></p>
+<%= @book.user.name %></p>
 <p>
   <strong><%= Book.human_attribute_name(:memo) %>:</strong>
   <%= simple_format(auto_link_filter(@book.memo)) %>

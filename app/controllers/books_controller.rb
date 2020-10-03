@@ -2,7 +2,7 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
-  before_action :correct_author, only: %i[edit update destroy]
+  before_action :correct_user, only: %i[edit update destroy]
 
   def index
     if params[:user_id]
@@ -15,7 +15,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    @user = @book.user
   end
 
   def new
@@ -56,7 +55,7 @@ class BooksController < ApplicationController
       params.require(:book).permit(:title, :memo, :author, :picture)
     end
 
-    def correct_author
+    def correct_user
       redirect_to(root_url)  unless current_user.id == @book.user.id
     end
 end
