@@ -1,0 +1,11 @@
+ja:
+  reports:
+    index:
+      new_report: 新規作成
+      reports: 日報一覧
+      list_of_posted_reports_by: "%{Contributor}の投稿日報一覧"
+    new: 
+      new_report: 新規日報作成
+    edit:
+      editing_report: 日報編集ページ
+

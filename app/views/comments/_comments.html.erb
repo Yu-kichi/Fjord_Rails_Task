@@ -1,0 +1,31 @@
+<h2 class="mt-5"><%= t ".list_of_comments" %></h2>
+
+<% commentable.comments.includes(:user).order_by_recent.each do |comment| %>
+  <%= simple_format(auto_link_filter(comment.body)) %>
+  <%= t ".contributor" %>:<%= comment.user.name %>
+  <%= l comment.updated_at, format: :short %>
+
+  <% if comment.editable?(current_user) %>
+    <%= link_to t("link.edit"), [:edit, commentable, comment] %> |
+    <%= link_to t("link.destroy"), [commentable, comment], method: :delete, data: { confirm: t("modal.confirm") } %>
+  <% end %>
+<hr>
+<% end %>
+
+<% if user_signed_in? %>
+  <h2><%= t ".post_comment" %></h2>
+  <%= form_with(model: [commentable, Comment.new], local: true) do |form| %>
+    <% if @comment&.errors.present? %>
+      <div id="error_explanation">
+      <h2><%= t("errors.template.header", model: Comment, count: @comment.errors.count) %></h2>
+        <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form.text_area :body,  class: "form-control" %>
+    <%= form.submit class: "btn btn-primary mt-4" %>
+  <% end %>
+<% end %>

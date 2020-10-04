@@ -1,0 +1,7 @@
+<p>
+  <h1><%= t ".editing_report" %></h1>
+</p>
+<%= render "form", report: @report %>
+
+<%= link_to t("link.show"), @report %> |
+<%= link_to t("link.back"), reports_path %>

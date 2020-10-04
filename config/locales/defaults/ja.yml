@@ -1,18 +1,18 @@
 ja:
   link:
-    Back: 戻る
-    Edit: 編集
-    Show: 詳細
-    Destroy: 削除
-    Top: トップページへ戻る
-    Logout: ログアウト
-    Edit password: パスワードを変更
+    back: 戻る
+    edit: 編集
+    show: 詳細
+    destroy: 削除
+    top: トップページへ戻る
+    logout: ログアウト
+    edit_password: パスワードを変更
     follow: フォローする
     following: フォロー中
   flash:
-    destroy: 削除しました！
-    create: 作成しました！
-    update: 更新しました！
+    destroy: "%{model}を削除しました！"
+    create: "%{model}を作成しました！"
+    update: "%{model}を更新しました！"
     failure: データの保存に失敗しました！
   modal:
     confirm: 本当に削除しますか？

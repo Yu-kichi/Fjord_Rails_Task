@@ -5,17 +5,16 @@ class BooksController < ApplicationController
   before_action :correct_user, only: %i[edit update destroy]
 
   def index
-    @time = Time.now
     if params[:user_id]
-      @user = User.find(params[:user_id]) # これで現在ログイン中の自分のものが表示できる。
-      @books = @user.books.page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
+      @user = User.find(params[:user_id])
+      @books = @user.books
     else
-      @books = Book.eager_load(:user).page(params[:page]).recent.per(Constants::DISPLAYABLE_USER_SIZE)
+      @books = Book.includes(:user)
     end
+    @books = @books.order_by_recent.page(params[:page]).per(Constants::DISPLAYABLE_USER_SIZE)
   end
 
   def show
-    @user = @book.user
   end
 
   def new
@@ -28,7 +27,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.new(book_params)
     if @book.save
-      redirect_to @book, notice: t("flash.create")
+      redirect_to @book, notice: t("flash.create", model: Book.model_name.human)
     else
       render :new
     end
@@ -36,7 +35,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to @book, notice: t("flash.update")
+      redirect_to @book, notice: t("flash.update", model: Book.model_name.human)
     else
       render :edit
     end
@@ -44,7 +43,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_url, alert: t("flash.destroy")
+    redirect_to books_url, alert: t("flash.destroy", model: Book.model_name.human)
   end
 
   private

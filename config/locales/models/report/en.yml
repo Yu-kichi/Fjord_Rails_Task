@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      report: Report          
+    attributes:                     
+      report:
+        id: ID
+        title: Title
+        body: Content
+        user_id: Contributor
+  attributes:
+    created_at: Created_at
+    updated_at: Updated_at
+

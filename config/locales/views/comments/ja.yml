@@ -1,0 +1,11 @@
+ja:
+  comments:
+    new:
+      post_comment: コメントを投稿する
+    edit:
+      editing_comment: コメントの編集
+    comments:
+      list_of_comments: コメント一覧
+      contributor: コメント投稿者
+      post_comment: コメントを投稿する
+

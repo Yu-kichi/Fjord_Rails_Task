@@ -5,7 +5,7 @@
   </h1>
 </p>
 <strong><p><%= Book.human_attribute_name(:user_id) %>：<strong>
-<%= @user.name %></p>
+<%= @book.user.name %></p>
 <p>
   <strong><%= Book.human_attribute_name(:memo) %>:</strong>
   <%= simple_format(auto_link_filter(@book.memo)) %>
@@ -20,7 +20,10 @@
   <strong><%= Book.human_attribute_name(:picture) %>:</strong>
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
-<% if user_signed_in? && current_user.id == @book.user.id %>
-  <%= link_to t("link.Edit"), edit_book_path(@book) %> |
+
+<% if @book.editable?(current_user) %>
+  <%= link_to t("link.edit"), edit_book_path(@book) %> |
 <% end %>
-<%= link_to t("link.Back"), books_path %>
+<%= link_to t("link.back"), books_path %>
+
+<%= render "comments/comments", commentable: @book %>

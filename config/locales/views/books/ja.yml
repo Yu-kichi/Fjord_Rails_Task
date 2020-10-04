@@ -1,11 +1,11 @@
 ja:
   books:
     index:
-      New Book: 新規作成
-      Books: 書籍一覧
-      List of posted books by : "%{Contributor}の投稿書籍一覧"
+      new_book: 新規作成
+      books: 書籍一覧
+      list_of_posted_books_by : "%{Contributor}の投稿書籍一覧"
     new: 
-      New Book: 新規登録
+      new_book: 新規登録
     edit:
-      Editing Book: 編集ページです
+      editing_book: 編集ページです
 

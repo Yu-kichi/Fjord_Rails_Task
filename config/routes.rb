@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   scope "(:locale)", locale: /en|ja/ do
     root "books#index"
-    resources :books
+    resources :reports do
+      resources :comments
+    end
+    resources :books do
+      resources :comments
+    end
     devise_for :users, skip: :omniauth_callbacks, controllers: {
       registrations: "users/registrations",
       sessions:      "users/sessions",
@@ -13,6 +18,7 @@ Rails.application.routes.draw do
      }
     resources :users, except: [:new, :create] do
       resources :books, only: [:index]
+      resources :reports, only: [:index]
       resource :follow_followers, only: [:create, :destroy]
       get :followings, on: :member
       get :followers, on: :member

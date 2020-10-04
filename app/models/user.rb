@@ -5,7 +5,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :portrait
   has_many :books, dependent: :destroy
-
+  has_many :reports, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # フォロー側
   # 外部キーには親の主キーを設定する。
   has_many :active_relationships, class_name: "FollowFollower", foreign_key: :following_id, dependent: :destroy
@@ -43,4 +44,6 @@ class User < ApplicationRecord
   def followed_by?(user)
     passive_relationships.exists?(following_id: user.id)
   end
+
+  scope :order_by_recent, -> { order(updated_at: :desc) }
 end

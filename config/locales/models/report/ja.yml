@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      report: 日報          
+    attributes:
+      report:
+        id: ID
+        title: タイトル
+        body: 内容
+        user_id: 投稿者
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
+
