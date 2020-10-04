@@ -24,7 +24,6 @@ class CommentsController < ApplicationController
         @report = @commentable
         render "reports/show"
       else
-        # 将来commentableが増えたとき、実装漏れにすぐ気づけるように例外を起こす
         raise "Unknown type: #{@commentable}"
       end
     end
