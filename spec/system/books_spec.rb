@@ -9,7 +9,7 @@ describe "book投稿機能", type: :system do
 
     context "ユーザーaがログインしている時" do 
       before do 
-        visit "ja/users/sign_in"
+        visit new_user_session_path
         fill_in "Eメール", with: "bob@example.com"
         fill_in "パスワード", with: "password"
         click_button "ログイン"
@@ -19,8 +19,7 @@ describe "book投稿機能", type: :system do
       end
 
       it "新規投稿する(create_book)" do 
-        #visit "ja/books/new"
-        visit "ja"
+        visit root_path
         click_button "新規作成"
 
         fill_in "作品名", with: "Ruby超入門"
@@ -35,7 +34,7 @@ describe "book投稿機能", type: :system do
       end
 
       it "本の編集をする(update_book)" do 
-        visit "ja"
+        visit root_path
         click_on "編集"
         
         fill_in "作品名", with: "Ruby超入門ですよ"
@@ -50,13 +49,12 @@ describe "book投稿機能", type: :system do
       end
       
       it "本を削除する(destroy_book)" do 
-        visit "ja"
-        click_on "削除" 
-        #ここでポップアップが出てくるところがうまく表現できてない。okボタンがテストで押せない為先に進まずエラー。
-         page.accept_confirm do
-           click_on "OK"
-         end
-        assert_text "Bookを削除しました！"
+        visit root_path
+        click_on "削除"
+        expect{
+          page.accept_confirm "本当に削除しますか？"
+          expect(page).to have_content "Bookを削除しました！"
+        }.to change { Book.count }.by(-1)
       end
     end    
   end
