@@ -34,21 +34,21 @@ ja:
       user: ユーザー
   users:
     followers:
-      Followers list: フォロワー一覧
+      followers_list: フォロワー一覧
     followings:  
-      Follows list: フォロー一覧
+      follows_list: フォロー一覧
     show:
       number_of_books_posted: 投稿した本の件数
       number_of_reports_posted: 投稿した日報の件数
       number_of_comments_posted: 投稿したコメントの数
-      Portrait: プロフィール画像
-      Follows: フォロー数
-      Followers: フォロワー数
-      Follows list: フォロー一覧
-      Followers list: フォロワー一覧
+      portrait: プロフィール画像
+      follows: フォロー数
+      followers: フォロワー数
+      follows_list: フォロー一覧
+      followers_list: フォロワー一覧
     edit:
-      Editing User: プロフィールの編集
-      Please_use_one_of_'png'_'jpg'_or_'jpeg'_for_portrait_file_format: プロフィール画像のファイル形式は'png', 'jpg', 'jpeg' のいずれかを使用してください。
+      editing_user: プロフィールの編集
+      please_use_one_of_'png'_'jpg'_or_'jpeg'_for_portrait_file_format: プロフィール画像のファイル形式は'png', 'jpg', 'jpeg' のいずれかを使用してください。
     confirmations:
       confirmed: メールアドレスが確認できました。
       new:

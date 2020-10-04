@@ -10,12 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_09_22_064129) do
-=======
-ActiveRecord::Schema.define(version: 2020_09_10_124018) do
 
->>>>>>> e72f10b... change schema
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -60,8 +56,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_124018) do
   end
 
   create_table "follow_followers", force: :cascade do |t|
-    t.integer "following_id"
-    t.integer "follower_id"
+    t.integer "following_id", null: false
+    t.integer "follower_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["follower_id"], name: "index_follow_followers_on_follower_id"
