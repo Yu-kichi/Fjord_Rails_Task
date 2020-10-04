@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :user do 
     name {"Alice"}
-    email {"Alice@example.com"}
+    email {"alice@example.com"}
     password {"password"}
+    uid {"123458"}
   end
 end

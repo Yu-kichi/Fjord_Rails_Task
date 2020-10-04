@@ -20,14 +20,13 @@ describe "book投稿機能", type: :system do
 
       it "新規投稿する(create_book)" do 
         visit root_path
-        click_button "新規作成"
+        click_on "新規作成"
 
         fill_in "作品名", with: "Ruby超入門"
         fill_in "著者名", with: "igaiga"
         fill_in "メモ", with: "rubyのことがよくわかる！"
-        click_button "登録する"
-
-        assert_text "Bookを作成しました！"
+        expect{click_button "登録する"}.to change{ Book.count }.by(1)
+        assert_text "本を作成しました！"
         assert_text "Ruby超入門"
         assert_text "igaiga"
         assert_text "rubyのことがよくわかる！"
@@ -42,7 +41,7 @@ describe "book投稿機能", type: :system do
         fill_in "メモ", with: "rubyのことがよくわかりますよ！"
         click_button "更新する"
 
-        assert_text "Bookを更新しました！"
+        assert_text "本を更新しました！"
         assert_text "Ruby超入門ですよ"
         assert_text "igaigaですよ"
         assert_text "rubyのことがよくわかりますよ！"
@@ -53,7 +52,7 @@ describe "book投稿機能", type: :system do
         click_on "削除"
         expect{
           page.accept_confirm "本当に削除しますか？"
-          expect(page).to have_content "Bookを削除しました！"
+          expect(page).to have_content "本を削除しました！"
         }.to change { Book.count }.by(-1)
       end
     end    
