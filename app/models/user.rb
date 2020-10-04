@@ -46,5 +46,4 @@ class User < ApplicationRecord
   end
 
   scope :order_by_recent, -> { order(updated_at: :desc) }
-  
 end
