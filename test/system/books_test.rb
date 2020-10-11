@@ -12,8 +12,8 @@ class BooksTest < ApplicationSystemTestCase
     click_button "ログイン"
 
     #これだとバリデーションに失敗し、テストがとおらない。しかしログインしているスクショが表示される。
-    sign_in_as(FactoryBot.create(:user))
-    FactoryBot.create(:book)
+    #sign_in_as(FactoryBot.create(:user))
+    #FactoryBot.create(:book)
 
     #これだとテストを実行する度に結果が変わる。ログイン状態が途切れてテストに失敗する。
     # Alice = sign_in_as(FactoryBot.create(:user))
