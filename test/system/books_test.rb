@@ -4,15 +4,20 @@ require "application_system_test_case"
 
 class BooksTest < ApplicationSystemTestCase
   setup do
+    #通常ログインの場合にはテストが全てパスする
     @book = FactoryBot.create(:book)
     visit new_user_session_path
     fill_in "Eメール", with: "alice@example.com"
     fill_in "パスワード", with: "password"
     click_button "ログイン"
 
-    #下のままだとなぜかログインが維持できていない。ログインはできているが、すぐログアウトしている。。
+    #これだとバリデーションに失敗し、テストがとおらない。しかしログインしているスクショが表示される。
+    sign_in_as(FactoryBot.create(:user))
+    FactoryBot.create(:book)
+
+    #これだとテストを実行する度に結果が変わる。ログイン状態が途切れてテストに失敗する。
     # Alice = sign_in_as(FactoryBot.create(:user))
-    # FactoryBot.create(:book, title: "よくわかるテスト", user: Alice)
+    # FactoryBot.create(:book, user: Alice)
   end
 
   test "ログインしたら本の一覧画面になる(index)" do
@@ -27,10 +32,11 @@ class BooksTest < ApplicationSystemTestCase
     fill_in "作品名", with: "Ruby超入門"
     fill_in "著者名", with: "igaiga"
     fill_in "メモ", with: "rubyのことがよくわかる！"
-    assert_difference("Book.count",1) do
+
+    assert_difference("Book.count", 1) do
       click_button "登録する"
     end
-    
+
     assert_text "本を作成しました！"
     assert_text "Ruby超入門"
     assert_text "igaiga"
@@ -40,7 +46,7 @@ class BooksTest < ApplicationSystemTestCase
   test "本の編集をする(update_book)" do
     visit root_path
     click_on "編集"
-    
+
     fill_in "作品名", with: "Ruby超入門ですよ"
     fill_in "著者名", with: "igaigaですよ"
     fill_in "メモ", with: "rubyのことがよくわかりますよ！"
@@ -54,11 +60,11 @@ class BooksTest < ApplicationSystemTestCase
 
   test "本を削除する(destroy_book)" do
     visit root_path
-    assert_difference("Book.count",-1) do
+    assert_difference("Book.count", -1) do
       accept_confirm do
           click_on "削除"
         end
-        assert_text "本を削除しました"
+      assert_text "本を削除しました"
     end
   end
 end
