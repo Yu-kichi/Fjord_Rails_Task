@@ -4,12 +4,12 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   test "followed_by?" do
-    me = User.create(name: "yuki", email: "yuki@example.com", password: "password", uid: "abc")
-    she = User.create(name: "saki", email: "saki@example.com", password: "password", uid: "def")
+    alice = FactoryBot.create(:user)
+    bob = FactoryBot.create(:user, name: "Bob", email: "bob@example.com", password: "password", uid: "bobtest")
 
-    me.active_relationships.create(follower_id: she.id)
-    assert she.followed_by?(me)
-    assert_not me.followed_by?(she)
+    alice.active_relationships.create(follower_id: bob.id)
+    assert bob.followed_by?(alice)
+    assert_not alice.followed_by?(bob)
   end
 
   test "self.find_for_github_oauth(auth), 登録済みのユーザーがいる場合、登録されてるユーザーを見つける。" do

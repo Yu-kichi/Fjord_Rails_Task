@@ -18,7 +18,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Eメール", with: "bob@example.com"
     fill_in "パスワード", with: "password"
     # (確認用)が見つからないのでここだけfindを使う。
-    find(:id, "confirm").set("password")
+    find('input[data-test="confirm"]').set("password")
 
     assert_difference("User.count", 1) do
       click_button "アカウント登録"
